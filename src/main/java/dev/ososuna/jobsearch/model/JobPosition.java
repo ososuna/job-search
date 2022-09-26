@@ -1,14 +1,18 @@
-package dev.ososuna.jobsearch;
+package dev.ososuna.jobsearch.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class JobPosition {
   
   private String id;

@@ -3,7 +3,7 @@ package dev.ososuna.jobsearch.api;
 import java.util.List;
 import java.util.Map;
 
-import dev.ososuna.jobsearch.JobPosition;
+import dev.ososuna.jobsearch.model.JobPosition;
 import feign.Headers;
 import feign.QueryMap;
 import feign.RequestLine;
