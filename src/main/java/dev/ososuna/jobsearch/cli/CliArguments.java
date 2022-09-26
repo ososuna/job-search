@@ -16,6 +16,7 @@ public class CliArguments {
   @Parameter(
     required = true,
     descriptionKey = "Keyword",
+    validateWith = CliKeywordValidator.class,
     description = "Keyword"
   )
   private String keyword;
@@ -47,6 +48,7 @@ public class CliArguments {
   @Parameter(
     names = {"--help", "-h"},
     help = true,
+    validateWith = CliHelpValidator.class,
     description = "Print this help message."
   )
   private boolean isHelp = false;
