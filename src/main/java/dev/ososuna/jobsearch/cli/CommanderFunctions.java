@@ -1,8 +1,12 @@
 package dev.ososuna.jobsearch.cli;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
 
 public class CommanderFunctions {
   public static <T> JCommander buildCommanderWithName(
@@ -10,9 +14,23 @@ public class CommanderFunctions {
     Supplier<T> argumentSupplier
   ) {
     JCommander jCommander = JCommander.newBuilder()
-      .addCommand(argumentSupplier.get())
+      .addObject(argumentSupplier.get())
       .build();
     jCommander.setProgramName(cliName);
     return jCommander;
+  }
+
+  public static Optional<List<Object>> parseArguments(
+    JCommander jCommander,
+    String[] args,
+    Consumer<JCommander> onError
+  ) {
+    try {
+      jCommander.parse(args);
+      return Optional.of(jCommander.getObjects());
+    } catch (ParameterException paramEx) {
+      onError.accept(jCommander);
+    }
+    return Optional.empty();
   }
 }
